@@ -20,10 +20,8 @@ const PlacesList = ({list}) => {
   //Aqui va el hook de weather api y al hacer click va al detalle de los proximos 7 dias
   
   const date = new Date();
-  console.log(date.addDays(5) , 'magiaaa' );
 
   const { data, error, isLoading } = useGetTempQuery(query)
-  console.log(data,'soy la data')
 
   
   if(isLoading){
