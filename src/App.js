@@ -1,51 +1,34 @@
-import React from 'react'
-import Navbar from './components/Navbar';
-import { reservamosApi, useGetPlacesQuery } from './services/reserApi';
-import { Box, Button, Flex, Heading, Input } from '@chakra-ui/react';
-import PlacesList from './components/PlacesList';
-import './App.css';
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Viewer from "./components/Viewer";
+import { FormContext } from './Context';
+import Home from "./pages/Home";
+
+
 
 function App() {
 
+   const [form, setForm] = useState({
+    name : '',
+    year : '',
+    month : '',
+    contract : '',
+    phone : '',
+    email : '',
+    address : '',
+    rfc : '',
+    deliverDate:'',
+    weeklyCost:''
+   })
 
-
-  const [trigger , result, lastPromiseInfo] = reservamosApi.endpoints.getPlaces.useLazyQuery()
-
-  const [input, setInput] = React.useState('')
-
-  console.log(result, 'spy el')
-
-  if(result.status === 'fulfilled' && result.data.length == 0 ){
-    alert('No se encontraron destinos con ese nombre')
-  }
-
-  if(result.isLoading === true){
-    return(
-      <Flex h={'100vh'} >
-
-        Cargando...
-      </Flex>
-    )
-  }
 
   return (
-    <Box bgColor='#6B728E' >
-
-      <Navbar trigger={trigger} />  
-
-    <Flex mt='1vh' ml='3vw' wrap={'wrap'} justify='space-around' w='90%'>
-          
-    {!result.isUninitialized === true ?
-    result.data?.map(ele =>{
-      return(
-        <PlacesList list={ele} /> 
-        )
-      })
-      : <Flex h={'100vh'} align='center' justify={'center'} > <Heading> Ingresar una ciudad... </Heading>  </Flex>
-    }
-      </Flex> 
-    </Box>
+    <FormContext.Provider value={{ form, setForm }} > 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pdf" element={<Viewer/>} />
+      </Routes>
+    </FormContext.Provider>
   );
 }
-
 export default App;
