@@ -1,8 +1,14 @@
 import React from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View, StyleSheet, Font } from '@react-pdf/renderer';
 import { defsData } from '../PdfData/DefinicionesList';
 import { DeclaracionesList, DeclaracionesList2 } from '../PdfData/DeclaracionesList';
 import { clausulaLetter, clausulaLetter2, ClausulasLetter3 } from '../PdfData/ClausulasList';
+
+
+
+
+Font.register({family:'Helvetica'})
+
 
 const styles = StyleSheet.create({
 
@@ -26,12 +32,14 @@ const styles = StyleSheet.create({
     },
     itemContent: {
         textAlign: 'justify',
-        fontSize: 8 
+        fontSize: 8 ,
+        fontFamily:'Helvetica'
     },
 
     defTitle:{
         fontSize:8,
-        color:'red'
+        fontFamily:'Helvetica-Bold',
+        fontWeight:'bold'
     }
 });
 

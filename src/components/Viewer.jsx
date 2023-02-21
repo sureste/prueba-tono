@@ -5,37 +5,47 @@ import {
     View,
     StyleSheet,
     PDFViewer,
-    Font
+    Font,
+    Image
 } from "@react-pdf/renderer";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContext } from '../Context';
 import AnexoB from "./PdfParts/AnexoB";
+import AnexoC from "./PdfParts/AnexoC";
 import { ClauItem, ClauItem2, ClauItem3, ListC } from "./PdfParts/Clausulas";
 import List, { DefItem, DeclaItem, DeclaItem2, ClauList, ClauList2, ClauList3 } from "./PdfParts/Definiciones";
 import Signatures from "./PdfParts/Signatures";
 import {Table} from './PdfParts/Table'
+import HeaderImg from './PdfData/Header.png'
+ 
+
+Font.register({family:'Helvetica'})
 
 
 // Create styles
 const styles = StyleSheet.create({
     page: {
-        padding: 40,
+        paddingBottom:30
     },
 
     body:{
         width:'90%',
+        padding: 35,
+
     },
 
     headText: {
         width: '100%',
         fontSize:'8px',
         textAlign: 'justify',
+        fontFamily:'Helvetica-Bold'
     },
 
     definicionesText:{
         fontSize:'8px',
         textAlign:'justify',
+        fontFamily:'Helvetica-Bold'
     },
 
     definicionesBold:{
@@ -59,18 +69,30 @@ const styles = StyleSheet.create({
 
     title: {
         textAlign: 'center',
-        color:'red',
         fontWeight: 800,
         fontSize: 8,
         marginBottom: 10,
         textTransform: 'uppercase',
+        fontFamily:'Helvetica-Bold'
     },
+    tableDescription:{
+        fontSize:8,
+        marginTop: '10px'
+    },
+    pageNumber:{
+        fontSize:'11px',
+        textAlign:'right',
+        paddingTop:'15px',
+        marginRight:'40px'
+    },
+    header:{
+        width:'100vw',
+    }
+
 });
 
 Font.register({
-    family: 'Roboto',
-    src: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
-});
+    family: 'Helvetica'});
 
 // Create Document Component
 function Viewer() {
@@ -96,6 +118,7 @@ function Viewer() {
             <Document>
                 {/*render a single page*/}
                 <Page style={styles.page} size="A4" wrap>
+                <Image style={styles.header} src={HeaderImg} fixed />
                     <View style={styles.body}>
                         <Text style={styles.headText}>
                             CONTRATO DE ARRENDAMIENTO DE VEHÍCULO QUE EN TÉRMINOS DE LO DISPUESTO POR EL CAPÍTULO VI,
@@ -181,9 +204,25 @@ function Viewer() {
 
                             <Signatures name={form.name} />
 
-                            {/* <AnexoB />  */}
+                            <AnexoB />  
+
+                            <AnexoC weeklyCost={form.weeklyCost} />
+
+
+                        <Text style={styles.definicionesText} >
+                        **El pago semanal señalado en el presente contrato por concepto de arrendamiento, se ajustará al año calendario, esto es, el primer día de los dos siguientes años, de conformidad con la inflación generada en el ejercicio anterior, publicada por el Banco Nacional de México. Esta modificación se verá reflejada en este anexo, generandose así una tabla actualizada con el nuevo costo semanal del arrendamiento.**
+
+                        </Text>
+
+
+                        <Signatures name={form.name} />
+
 
                     </View>
+
+                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
+        `${pageNumber}`
+      )} fixed />
                 </Page>
             </Document>
         </PDFViewer>

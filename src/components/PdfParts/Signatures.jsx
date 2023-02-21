@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
     containerS: {
-        marginTop:'10vh',
+        marginTop:'5vh',
         flexDirection:'row',
         justifyContent:'space-around'
     },
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     },
     names:{
         fontSize:8,
-        textAlign:'center'
+        textAlign:'center',
+        fontFamily:'Helvetica'
     },
 });
 

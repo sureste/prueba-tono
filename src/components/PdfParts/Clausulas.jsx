@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
     
     itemContent: {
         textAlign: 'justify',
-        fontSize: 8
+        fontSize: 8,
+        fontFamily:'Helvetica'
     },
 
     clasulasBolds : {
         textAlign: 'justify',
         fontSize: 8,
-        color:'red'
-        
+        fontFamily:'Helvetica-Bold'        
     }
 
 });

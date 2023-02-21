@@ -23,14 +23,17 @@ const styles = StyleSheet.create({
     tableHeadCell :{
         textAlign:'left',
         marginTop: 5,
-        fontSize: 10
+        fontSize: 10,
+        fontFamily:'Helvetica',
+        fontSize:8
     },
 
     tableHeadCellTitle :{
         textAlign:'center',
         marginTop: 5,
         fontSize: 10,
-        color:'red'
+        fontFamily:'Helvetica-Bold',
+        fontSize:8
     },
     tableRow: {
         margin: "auto",
@@ -54,13 +57,15 @@ const styles = StyleSheet.create({
     tableCell: {
         margin: "auto",
         marginTop: 5,
-        fontSize: 10
+        fontSize: 10,
+        fontFamily:'Helvetica',
+        fontSize:8
     }
 });
 
 export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc , email , address }) => (
    
-            <View style={styles.table}>
+            <View style={styles.table} break >
 
                     <View style={styles.tableRow}>
                         <View style={styles.tableHead} >
@@ -206,7 +211,7 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
                         <Text style={styles.tableHeadCell}> {' '} </Text>
                         <Text style={styles.tableHeadCell}> {' '} </Text>
                         <Text style={styles.tableHeadCell}> Autorización para la utilización de información con fines mercadotécnicos o publicitarios.  </Text>
-                        <Text style={styles.tableHeadCell}> _____________________________________________  </Text>
+                        <Text style={styles.tableHeadCellTitle}> ___________________________________________________________________________  </Text>
                 <Text style={styles.tableHeadCell}> {'El solicitante del servicio SI (    ) NO (    ) acepta que el proveedor ceda o transmita a terceros, con fines mercadotécnicos o publicitarios, la información proporcionada por él con motivo del presente contrato y SI (    ) NO (    ) acepta que el arrendador le envíe publicidad sobre bienes y servicios.'}  </Text>
                         </View>
                     </View>

@@ -34,8 +34,10 @@ const Home = () => {
 
 
     return (
-        <Flex h={'100vh'} justify={'center'} align='center'  >
-            <Flex direction={'column'} p='15px' borderRadius='15px' rowGap='5vh' w={'30%'} border='1px solid purple' boxShadow={'20px'} >
+        <Box h={'100vh'} >
+        
+        <Flex  justify={'center'} align='center'  >
+            <Flex direction={'column'} p='15px' borderRadius='15px' rowGap='5vh' w={'800px'} border='1px solid purple' boxShadow={'20px'} >
                 <Box>
                 <FormLabel> Nombre </FormLabel>
                 <Input onChange={handleChange} name='name' value={form.name} type='text' placeholder='Ingresa un nombre' />
@@ -77,6 +79,8 @@ const Home = () => {
                 </Button>
             </Flex>
         </Flex>
+
+        </Box>
     );
 }
 export default Home;
