@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 
     content:{
         flexDirection:'column',
-        rowGap:'4vh',
+        rowGap:'2vh',
         marginTop:'25px'
     },
 
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop: 5,
         fontSize: 6,
-        color:'red'
+        fontFamily:'Helvetica'
     },
     tableRow: {
         margin: "auto",
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
 })
 
 
-const AnexoC = ({weeklyCost}) => {
+const AnexoC = ({deliverDate ,weeklyCost}) => {
 
-    const nextDate = paymentsArray()
+    const nextDate = paymentsArray(deliverDate)
 
     
 

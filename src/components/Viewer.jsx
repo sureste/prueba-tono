@@ -103,7 +103,7 @@ function Viewer() {
 
 
     useEffect(() => {
-        if (!form.name.length) {
+        if (!form.firstName) {
             return navigate('/')
         }
     }, [])
@@ -125,7 +125,7 @@ function Viewer() {
                             DEL CÓDIGO CIVIL PARA EL DISTRITO FEDERAL (AHORA CIUDAD DE MÉXICO), CELEBRAN POR UNA PARTE E-
                             MKT GOODS DE MÉXICO S.A.P.I. DE C.V., REPRESENTADA EN ESTE ACTO POR SU APODERADO LEGAL EL C.
                             MAIRON ESTEBAN SANDOVAL GÓMEZ, A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ “EL ARRENDADOR” Y,
-                            POR LA OTRA, EL C. {form.name}, POR SU PROPIO DERECHO, A QUIEN PARA LOS EFECTOS DE
+                            POR LA OTRA, EL C. {`${form.firstName} ${form.lastName}`}, POR SU PROPIO DERECHO, A QUIEN PARA LOS EFECTOS DE
                             ESTE CONTRATO SE LE DENOMINARÁ COMO “EL ARRENDATARIO” Y CUANDO ACTUEN CONJUNTAMENTE SE
                             LES DENOMINARÁ COMO “LAS PARTES”, QUIENES SE SUJETAN A LAS SIGUIENTES, DEFINICIONES,
                             DECLARACIONES Y CLÁUSULAS:
@@ -134,8 +134,7 @@ function Viewer() {
                     <View style={styles.defContainer} >
                         <Text style={styles.title} > D E F I N I C I O N E S </Text>
 
-                        <List>
-                            
+                        <List>      
                                 <DefItem />
                         </List>
                     </View>
@@ -191,38 +190,36 @@ function Viewer() {
 
                             <ListC>
                                 {/* Es mejor encontrar la manera de pasarle la fecha al componente */}
-                                <ClauItem3 month={form.month} year={form.year} />
+                                <ClauItem3 deliverDate={form.deliverDate} />
 
                             </ListC>
 
                              </View>
                             
-                            <Signatures name={form.name} />
+                             <Signatures firstName={form.firstName} lastName={form.lastName} />
 
 
-                            <Table contract = { form.contract } phone ={ form.phone } deliverDate={form.deliverDate} weeklyCost={form.weeklyCost} name={form.name} rfc={form.rfc} email={form.email} address={form.address} />
+                            <Table contract = { form.contract } phone ={ form.phone } deliverDate={form.deliverDate} weeklyCost={form.weeklyCost} firstName={form.firstName} lastName={form.lastName} rfc={form.rfc} email={form.email} street={form.street} exterior={form.exterior} interior={form.interior} colony={form.colony} postalNumber={form.postalNumber} alcaldia = {form.alcaldia} entidad={form.entidad} branch ={form.branch} model={form.model} version={form.version} />
 
-                            <Signatures name={form.name} />
+                            <Signatures firstName={form.firstName} lastName={form.lastName} />
 
                             <AnexoB />  
 
-                            <AnexoC weeklyCost={form.weeklyCost} />
+                            <AnexoC deliverDate={form.deliverDate} weeklyCost={form.weeklyCost} />
 
 
-                        <Text style={styles.definicionesText} >
+                        <Text style={{fontFamily:'Helvetica' , fontSize:'8px' , marginTop:'15px' }} >
                         **El pago semanal señalado en el presente contrato por concepto de arrendamiento, se ajustará al año calendario, esto es, el primer día de los dos siguientes años, de conformidad con la inflación generada en el ejercicio anterior, publicada por el Banco Nacional de México. Esta modificación se verá reflejada en este anexo, generandose así una tabla actualizada con el nuevo costo semanal del arrendamiento.**
 
                         </Text>
 
 
-                        <Signatures name={form.name} />
+                        <Signatures firstName={form.firstName} lastName={form.lastName} />
 
 
                     </View>
 
-                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
-        `${pageNumber}`
-      )} fixed />
+                    <Text style={styles.pageNumber} render={({ pageNumber }) => (`${pageNumber}` )} fixed />
                 </Page>
             </Document>
         </PDFViewer>

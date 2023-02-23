@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import { ClausulasList, ClausulasList2, ClausulasList3 } from '../PdfData/ClausulasList';
+import moment from 'moment';
+
+
 const styles = StyleSheet.create({
 
     clausulasContainer:{
@@ -27,7 +30,6 @@ const styles = StyleSheet.create({
     }
 
 });
-
 
 
 
@@ -68,7 +70,9 @@ export const ClauItem2 = () => (
     </View>
 );
 
-export const ClauItem3 = ( {month , year} ) => (
+export const ClauItem3 = ( {deliverDate} ) =>{
+    let date = moment(deliverDate, 'YYYY-MM-DD')
+return (
     <View style={styles.clausulasContainer} >
 
         {
@@ -81,7 +85,7 @@ export const ClauItem3 = ( {month , year} ) => (
                 )
             })
         }
-        <Text style={styles.itemContent} break > Leído que fue el presente contrato por las partes y enteradas del alcance legal de todo el contenido de este, lo firman al calce y al margen para constancia, en la Ciudad de México, México en el mes de {month} del {year}. </Text>
+        <Text style={styles.itemContent} break > Leído que fue el presente contrato por las partes y enteradas del alcance legal de todo el contenido de este, lo firman al calce y al margen para constancia, en la Ciudad de México, México en el mes de { date.locale('es').format('LL') }. </Text>
 
     </View>
-);
+)};

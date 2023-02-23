@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const Signatures = ({name}) =>( 
+const Signatures = ({ firstName, lastName }) =>( 
 
     <View style={styles.containerS} >
 
@@ -42,7 +42,7 @@ const Signatures = ({name}) =>(
                         ______________________________________
                     </Text>
                     <Text style={styles.names} >
-                        {name}
+                        {`${firstName} ${lastName}`}
                     </Text>
                     <Text style={styles.names} >
                         Por su propio derecho

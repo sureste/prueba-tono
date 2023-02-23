@@ -9,16 +9,25 @@ import Home from "./pages/Home";
 function App() {
 
    const [form, setForm] = useState({
-    name : '',
-    year : '',
-    month : '',
+    firstName : '',
+    lastName : '' ,
     contract : '',
     phone : '',
     email : '',
-    address : '',
     rfc : '',
     deliverDate:'',
-    weeklyCost:''
+    weeklyCost:'',
+    street : '',
+    exterior:'',
+    interior:'',
+    colony:'',
+    postalNumber:'',
+    alcaldia:'',
+    entidad:'',
+    branch:'',
+    model:'',
+    version:''
+
    })
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Text, StyleSheet, View } from '@react-pdf/renderer';
 
 
@@ -60,10 +61,22 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontFamily:'Helvetica',
         fontSize:8
+    },
+    tableCellRfc: {
+        marginTop: 5,
+        fontSize: 10,
+        fontFamily:'Helvetica',
+        fontSize:8,
+        textAlign:'left'
     }
 });
 
-export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc , email , address }) => (
+export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, lastName , rfc , email , street, exterior, interior,colony,postalNumber,alcaldia,entidad,branch,model,version }) => {
+    
+    let date = moment(deliverDate, 'YYYY-MM-DD')
+
+
+    return(
    
             <View style={styles.table} break >
 
@@ -87,8 +100,8 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
                     <View style={styles.tableRow}>
                         <View style={styles.tableHead} >
                         <Text style={styles.tableHeadCellTitle}>DATOS DE “EL ARRENDATARIO”. </Text>
-                        <Text style={styles.tableHeadCell}>  a) Nombre: {name}  </Text>
-                        <Text style={styles.tableHeadCell}> b) Domicilio: { address}  </Text>
+                        <Text style={styles.tableHeadCell}>  a) Nombre: {`${firstName} ${lastName}`}  </Text>
+                        <Text style={styles.tableHeadCell}> b) Domicilio:{`${street} ${exterior} ${colony} ${entidad}`}   </Text>
                         <Text style={styles.tableHeadCell}> c) Teléfono personal: {phone}  Teléfono fijo:  </Text>
                         <Text style={styles.tableHeadCell}> d) Correo electrónico: { email }  </Text>
                         <Text style={styles.tableHeadCell}> e) Registro Federal de Contribuyentes: {rfc}  </Text>
@@ -98,7 +111,7 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
                         <View style={styles.tableHead} >
                         <Text style={styles.tableHeadCellTitle}>LUGAR Y FECHA DE ENTREGA Y RECEPCIÓN DEL VEHÍCULO  </Text>
                         <Text style={styles.tableHeadCell}>  Lugar de entrega: Oficinas Administrativas OneCarNow! Lugar de Recepción Oficinas Administrativas OneCarNow! </Text>
-                        <Text style={styles.tableHeadCell}> Fecha y hora de entrega: {deliverDate}   Fecha y hora de recepción:  </Text>
+                        <Text style={styles.tableHeadCell}> Fecha y hora de entrega: {date.format('LL')}   Fecha y hora de recepción:  </Text>
                         </View>
                     </View>
                     <View style={styles.tableRow}>
@@ -120,7 +133,7 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
                         <Text style={styles.tableCell}>Costo semanal ${weeklyCost} </Text>
                     </View>
                     <View style={styles.tableCol}>
-                        <Text style={styles.tableCell}>Costo total ${weeklyCost * 15} MXN</Text>
+                        <Text style={styles.tableCell}>Costo total ${weeklyCost * 156} MXN</Text>
                     </View>
                 </View>
 
@@ -147,26 +160,26 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
 
                         <View style={styles.tableRow}>
                             <View style={styles.tableCol}>
-                                <Text style={styles.tableCell}>RFC : </Text>
+                                <Text style={styles.tableCellRfc}>RFC : {rfc} </Text>
                             </View>
                             <View style={styles.tableCol}>
-                                <Text style={styles.tableCell}>Nombre o Razón social : </Text>
+                                <Text style={styles.tableCell}>Nombre o Razón social : {`${firstName} ${lastName} `} </Text>
                             </View>
                      </View>
 
                         <View style={styles.tableRow}>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}>Calle</Text>
-                                 <Text style={styles.tableCell}>Número Exterior:</Text>
-                                <Text style={styles.tableCell}>Número interior:</Text>
+                                <Text style={styles.tableCellRfc}>Calle :{street} </Text>
+                                 <Text style={styles.tableCellRfc}>Número Exterior:{exterior} </Text>
+                                <Text style={styles.tableCellRfc}>Número interior: {interior} </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}>Colonia:</Text>
-                                <Text style={styles.tableCell}>Código Postal:</Text>
+                                <Text style={styles.tableCellRfc}>Colonia: {colony} </Text>
+                                <Text style={styles.tableCellRfc}>Código Postal: {postalNumber} </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}> Alcaldía o Municipio: </Text>
-                                <Text style={styles.tableCell}>Entidad Federativa: </Text>
+                                <Text style={styles.tableCellRfc}> Alcaldía o Municipio: {alcaldia} </Text>
+                                <Text style={styles.tableCellRfc}>Entidad Federativa: {entidad} </Text>
                             </View>
                          </View>
 
@@ -180,13 +193,13 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
 
                         <View style={styles.tableRow}>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}>Marca : </Text>
+                                <Text style={styles.tableCellRfc}>Marca : </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}>Modelo :</Text>
+                                <Text style={styles.tableCellRfc}>Modelo :</Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCell}>Versión: </Text>
+                                <Text style={styles.tableCellRfc}>Versión: </Text>
                             </View>
                          </View>
 
@@ -219,4 +232,4 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , name , rfc ,
 
             </View>
      
-);
+)};
