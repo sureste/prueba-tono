@@ -1,8 +1,11 @@
 import moment from 'moment';
 
 
-function siguienteLunes(fecha) {
-  let fechaMoment = moment(fecha, 'YYYY-MM-DD');
+function siguienteLunes(date) {
+  let fechaMoment = moment(date, 'YYYY-MM-DD');
+console.log(date, fechaMoment)
+  if(fechaMoment.day() === 1 ) return fechaMoment
+
   let diasHastaLunes = 1 + (7 - fechaMoment.day());
   let siguienteLunes = fechaMoment.clone().add(diasHastaLunes, 'days');
   return siguienteLunes
@@ -14,15 +17,15 @@ function siguienteLunes(fecha) {
     let lunes = siguienteLunes(date);
 
 
-    let pagos = []
+    let pagos = [{day :lunes.format('DD-MM-YYYY') ,number: 1}]
 
 
 
-    for(let i = 0 ; i <=155 ; i++){
+    for(let i = 1 ; i <=155 ; i++){
 
         pagos.push({day :lunes.add(1,'week').format('DD-MM-YYYY'), number:i+1})
     }
-
+console.log(pagos, 'soy el arr pagos')
       return pagos
 
   }

@@ -1,6 +1,7 @@
 
 
 
+
 export const ClausulasList = [
     {
         title: 'PRIMERA.- OBJETO. “EL ARRENDADOR”',
@@ -286,10 +287,11 @@ completamente con “EL ARRENDADOR” y con la autoridad competente conocedora d
         description: `La falta de entrega oportuna de cada vehículo a la terminación anticipada del Contrato, motivará que todos los riesgos que pudiera(n) éste(os) sufrir y las responsabilidades de cualquier naturaleza que pudieran derivarse de su uso, inclusive de índole civil, penal, civil objetiva, administrativa y demás que resulten, serán íntegra y absolutamente por cuenta de “EL ARRENDATARIO”.`
     },
    
-    {
-        title: 'DÉCIMA CUARTA.- VENTA DEL VEHÍCULO ARRENDADO.',
-        description: `Las partes convienen que al vencimiento del plazo a que se refiere el "ANEXO A"y el “ANEXO C” del presente contrato, una vez que “EL ARRENDADOR” haya cumplido con todas sus obligaciones de pago,  “EL ARRENDADOR” le concede a “EL ARRENDATARIO” la opción de compra del vehículo arrendado en el presente contrato, mediante el pago de la cantidad de $ 100,000.00 M.N. (Cien mil pesos 00/100 Moneda Nacional). “EL ARRENDATARIO” efectuará el pago de contado del precio de la compra por el vehículo arrendado en los siguientes 3 (tres) días en que se cubra la parte correspondiente de la última renta, según se establece en el "ANEXO A" y en el “ANEXO C” del presente contrato.`
-    },
+]
+
+    export const ClausulasList3_1 = 
+    [
+   
     {
         title: 'DÉCIMA QUINTA.- INDEMNIZACIÓN DE “EL ARRENDATARIO” A FAVOR DE “EL ARRENDADOR”; ALCANCE.',
         description: `Sin perjuicio de cualquier otra indemnización o liberación de responsabilidad a que esté obligada “EL ARRENDATARIO frente a “EL ARRENDADOR” en términos del presente Contrato y el sus anexos, “EL ARRENDATARIO” se obliga a sacar en paz y a salvo a “EL ARRENDADOR” de cualquier reclamación, acción, responsabilidad o demanda, de carácter administrativo, judicial o cualquier otra índole (en adelante la “Reclamación”), relacionada de cualquier forma o resultante de la propiedad, mantenimiento, reparación, posesión, uso, operación, funcionamiento, control o almacenamiento de cualquiera de los Bienes por parte de “EL ARRENDATARIO” o cualquier tercero, ya sea que la Reclamación la entable “EL ARRENDADOR”, “EL ARRENDATARIO”, algún tercero o cualquier Autoridad Gubernamental, así como a pagar a “EL ARRENDADOR” cualquier gasto (tales como, de manera enunciativa y no limitativa, honorarios legales, multas y sanciones de carácter pecuniario) que pague “EL ARRENDADOR” con motivo de la reclamación, siempre que tales gastos sean razonables y estén debidamente documentados. “EL ARRENDATARIO deberá cubrir a “EL ARRENDADOR” los gastos en que este último incurra de acuerdo con lo anterior, dentro de los 3 (tres) Días Hábiles siguientes a la fecha en que “EL ARRENDADOR” presente a “EL ARRENDATARIO” la documentación soporte correspondiente; en caso de falta de pago por parte de “EL ARRENDATARIO” a “EL ARRENDADOR”, respecto de los gastos antes mencionados, el importe respectivo causará Intereses Moratorios de acuerdo con lo estipulado en este Contrato y el sus anexos. Las estipulaciones contenidas en el presente párrafo subsistirán aún después de la terminación del presente Contrato y sus anexos.`

@@ -1,12 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 import { Text, StyleSheet, View } from '@react-pdf/renderer';
+import 'moment/locale/es';
 
 
 const styles = StyleSheet.create({
     table: {
         display: "table",
-        width: "auto",
+        width: "100%",
         borderStyle: "solid",
         borderWidth: 1,
         borderRightWidth: 0,
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
     },
     tableRow: {
         margin: "auto",
-        flexDirection: "row"
+        flexDirection: "row",
+        height:'auto'
     },
 
     tableCol: {
@@ -71,12 +73,13 @@ const styles = StyleSheet.create({
     }
 });
 
-export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, lastName , rfc , email , street, exterior, interior,colony,postalNumber,alcaldia,entidad,branch,model,version }) => {
+export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, lastName , rfc , email , street, streetF ,exterior, exteriorF, interior, interiorF, colony, colonyF, postalNumber, postalNumberF ,alcaldia, alcaldiaF,entidad, entidadF ,branch,model,version, landline , deliverHour , insurance}) => {
     
     let date = moment(deliverDate, 'YYYY-MM-DD')
 
 
     return(
+        <>
    
             <View style={styles.table} break >
 
@@ -101,8 +104,8 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, l
                         <View style={styles.tableHead} >
                         <Text style={styles.tableHeadCellTitle}>DATOS DE “EL ARRENDATARIO”. </Text>
                         <Text style={styles.tableHeadCell}>  a) Nombre: {`${firstName} ${lastName}`}  </Text>
-                        <Text style={styles.tableHeadCell}> b) Domicilio:{`${street} ${exterior} ${colony} ${entidad}`}   </Text>
-                        <Text style={styles.tableHeadCell}> c) Teléfono personal: {phone}  Teléfono fijo:  </Text>
+                        <Text style={styles.tableHeadCell}> b) Domicilio:{`${street} ${exterior} ${colony} ${entidad} ${alcaldia} ${postalNumber}`   }   </Text>
+                        <Text style={styles.tableHeadCell}> c) Teléfono personal: +52 {phone}  Teléfono fijo:{landline ? `+52 ${landline}` : " " } </Text>
                         <Text style={styles.tableHeadCell}> d) Correo electrónico: { email }  </Text>
                         <Text style={styles.tableHeadCell}> e) Registro Federal de Contribuyentes: {rfc}  </Text>
                         </View>
@@ -111,7 +114,7 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, l
                         <View style={styles.tableHead} >
                         <Text style={styles.tableHeadCellTitle}>LUGAR Y FECHA DE ENTREGA Y RECEPCIÓN DEL VEHÍCULO  </Text>
                         <Text style={styles.tableHeadCell}>  Lugar de entrega: Oficinas Administrativas OneCarNow! Lugar de Recepción Oficinas Administrativas OneCarNow! </Text>
-                        <Text style={styles.tableHeadCell}> Fecha y hora de entrega: {date.format('LL')}   Fecha y hora de recepción:  </Text>
+                        <Text style={styles.tableHeadCell}> {`Fecha y hora de entrega: ${date.locale('es').format('LL')} ${deliverHour}   Fecha y hora de recepción: ${date.locale('es').format('LL')} ${deliverHour}`}   </Text>
                         </View>
                     </View>
                     <View style={styles.tableRow}>
@@ -169,17 +172,17 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, l
 
                         <View style={styles.tableRow}>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}>Calle :{street} </Text>
-                                 <Text style={styles.tableCellRfc}>Número Exterior:{exterior} </Text>
-                                <Text style={styles.tableCellRfc}>Número interior: {interior} </Text>
+                                <Text style={styles.tableCellRfc}>Calle :{streetF? streetF : street} </Text>
+                                 <Text style={styles.tableCellRfc}>Número Exterior:{ exteriorF? exteriorF : exterior} </Text>
+                                <Text style={styles.tableCellRfc}>Número interior: { exteriorF? interiorF? interiorF : " " : interior } </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}>Colonia: {colony} </Text>
-                                <Text style={styles.tableCellRfc}>Código Postal: {postalNumber} </Text>
+                                <Text style={styles.tableCellRfc}>Colonia: { colonyF? colonyF :  colony} </Text>
+                                <Text style={styles.tableCellRfc}>Código Postal: { postalNumberF? postalNumberF : postalNumber} </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}> Alcaldía o Municipio: {alcaldia} </Text>
-                                <Text style={styles.tableCellRfc}>Entidad Federativa: {entidad} </Text>
+                                <Text style={styles.tableCellRfc}> Alcaldía o Municipio: {alcaldiaF? alcaldiaF : alcaldia} </Text>
+                                <Text style={styles.tableCellRfc}>Entidad Federativa: {entidadF? entidadF : entidad} </Text>
                             </View>
                          </View>
 
@@ -193,22 +196,28 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, l
 
                         <View style={styles.tableRow}>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}>Marca : </Text>
+                                <Text style={styles.tableCellRfc}>Marca : {branch} </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}>Modelo :</Text>
+                                <Text style={styles.tableCellRfc}>Modelo : {model} </Text>
                             </View>
                             <View style={styles.tableCol2}>
-                                <Text style={styles.tableCellRfc}>Versión: </Text>
+                                <Text style={styles.tableCellRfc}>Versión: {version} </Text>
                             </View>
                          </View>
 
+
+                     </View>
+
+
+                        <View style={styles.table} break > 
+
                          <View style={styles.tableRow}>
                         <View style={styles.tableHead} >
-                        <Text style={styles.tableHeadCellTitle}>DOCUMENTACIÓN </Text>
+                        <Text style={styles.tableHeadCellTitle}  >DOCUMENTACIÓN </Text>
                         <Text style={styles.tableHeadCell}>Documentación que se entregará al arrendatario para amparar la legal tenencia del vehículo: </Text>
                         <Text style={styles.tableHeadCell}>   SEGURO “COBERTURA AMPLIA” </Text>
-                        <Text style={styles.tableHeadCell}> Aseguradora: QUALITAS </Text>
+                        <Text style={styles.tableHeadCell}> Aseguradora: {insurance} </Text>
                         <Text style={styles.tableHeadCell}> Daños Materiales: Valor del mercado del Vehículo  Deducible: 20% </Text>
                         <Text style={styles.tableHeadCell}> {'Robo total: Valor comercial        Deducible 20%'} </Text>
                         <Text style={styles.tableHeadCell}> Responsabilidad Civil por Daños a Terceros hasta $3,000,000 MXN por evento </Text>
@@ -225,11 +234,13 @@ export const Table = ({ contract , phone, deliverDate, weeklyCost , firstName, l
                         <Text style={styles.tableHeadCell}> {' '} </Text>
                         <Text style={styles.tableHeadCell}> Autorización para la utilización de información con fines mercadotécnicos o publicitarios.  </Text>
                         <Text style={styles.tableHeadCellTitle}> ___________________________________________________________________________  </Text>
-                <Text style={styles.tableHeadCell}> {'El solicitante del servicio SI (    ) NO (    ) acepta que el proveedor ceda o transmita a terceros, con fines mercadotécnicos o publicitarios, la información proporcionada por él con motivo del presente contrato y SI (    ) NO (    ) acepta que el arrendador le envíe publicidad sobre bienes y servicios.'}  </Text>
+                        <Text style={styles.tableHeadCell}> {'El solicitante del servicio SI (    ) NO (    ) acepta que el proveedor ceda o transmita a terceros, con fines mercadotécnicos o publicitarios, la información proporcionada por él con motivo del presente contrato y SI (    ) NO (    ) acepta que el arrendador le envíe publicidad sobre bienes y servicios.'}  </Text>
                         </View>
+                        </View>
+
+
                     </View>
 
-
-            </View>
+        </>
      
 )};

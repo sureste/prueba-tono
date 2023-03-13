@@ -55,7 +55,7 @@ const AnexoB = () =>(
     <View>
         <Text style={styles.anexoTitle}>Anexo B</Text>
         <Text style={styles.anexoTitle}>Constancia de entrega </Text>
-        <Text style={styles.anexoSubTitle}>Ciudad de México, _______ del mes de ______________ del 2022</Text>
+        <Text style={styles.anexoSubTitle}>Ciudad de México, _______ del mes de ______________ del 2023</Text>
     </View>
 
     <View>

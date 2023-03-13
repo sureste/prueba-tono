@@ -13,9 +13,11 @@ function App() {
     lastName : '' ,
     contract : '',
     phone : '',
+    landline:'',
     email : '',
     rfc : '',
     deliverDate:'',
+    deliverHour:'',
     weeklyCost:'',
     street : '',
     exterior:'',
@@ -24,9 +26,19 @@ function App() {
     postalNumber:'',
     alcaldia:'',
     entidad:'',
+    streetF : '',
+    exteriorF:'',
+    interiorF:'',
+    colonyF:'',
+    postalNumberF:'',
+    alcaldiaF:'',
+    entidadF:'',
     branch:'',
     model:'',
-    version:''
+    version:'',
+    finalSale:'',
+    insurance:'',
+    finalSaleText:''
 
    })
 

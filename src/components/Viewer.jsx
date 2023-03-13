@@ -26,13 +26,14 @@ Font.register({family:'Helvetica'})
 // Create styles
 const styles = StyleSheet.create({
     page: {
-        paddingBottom:30
+        paddingBottom:30,
+        flexDirection:'column',
+        alignContent:'center'
     },
 
     body:{
-        width:'90%',
-        padding: 35,
-
+        marginLeft:'10%',
+        marginRight:'10%'
     },
 
     headText: {
@@ -190,7 +191,7 @@ function Viewer() {
 
                             <ListC>
                                 {/* Es mejor encontrar la manera de pasarle la fecha al componente */}
-                                <ClauItem3 deliverDate={form.deliverDate} />
+                                <ClauItem3 deliverDate={form.deliverDate} finalSale={form.finalSale} finalSaleText={form.finalSaleText} />
 
                             </ListC>
 
@@ -199,7 +200,7 @@ function Viewer() {
                              <Signatures firstName={form.firstName} lastName={form.lastName} />
 
 
-                            <Table contract = { form.contract } phone ={ form.phone } deliverDate={form.deliverDate} weeklyCost={form.weeklyCost} firstName={form.firstName} lastName={form.lastName} rfc={form.rfc} email={form.email} street={form.street} exterior={form.exterior} interior={form.interior} colony={form.colony} postalNumber={form.postalNumber} alcaldia = {form.alcaldia} entidad={form.entidad} branch ={form.branch} model={form.model} version={form.version} />
+                            <Table contract = { form.contract } phone ={ form.phone } deliverDate={form.deliverDate} weeklyCost={form.weeklyCost} firstName={form.firstName} lastName={form.lastName} rfc={form.rfc} email={form.email} street={form.street} streetF={form.streetF} exterior={form.exterior} exteriorF={form.exteriorF} interior={form.interior} interiorF={form.interiorF} colony={form.colony} colonyF={form.colonyF} postalNumber={form.postalNumber} postalNumberF={form.postalNumberF} alcaldia = {form.alcaldia} alcaldiaF={form.alcaldiaF} entidad={form.entidad} entidadF={form.entidadF} branch ={form.branch} model={form.model} version={form.version} landline={form.landline} deliverHour={form.deliverHour} insurance={form.insurance} />
 
                             <Signatures firstName={form.firstName} lastName={form.lastName} />
 

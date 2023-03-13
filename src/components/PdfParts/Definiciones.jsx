@@ -14,12 +14,14 @@ const styles = StyleSheet.create({
 
     definicionContainer:{
         flexDirection:'column',
-        rowGap:'15px'
+        rowGap:'15px',
     },
 
     item: {
         flexDirection: 'row',
         alignContent:'center',
+        marginLeft:'30px',
+
     },
     letterPoint: {
         fontSize: 8,
@@ -33,7 +35,8 @@ const styles = StyleSheet.create({
     itemContent: {
         textAlign: 'justify',
         fontSize: 8 ,
-        fontFamily:'Helvetica'
+        fontFamily:'Helvetica',
+        width:'100%'
     },
 
     defTitle:{
@@ -57,7 +60,7 @@ export const DefItem = () => (
                             <Text style={styles.letterPoint}> {letter}) </Text>
                         </View>
 
-                        <Text style={styles.itemContent} break > <Text style={styles.defTitle} > {title} </Text> {description} </Text>
+                        <Text style={styles.itemContent}  > <Text style={styles.defTitle} > {title} </Text> {description} </Text>
                         
                     </View>
                 ) 
